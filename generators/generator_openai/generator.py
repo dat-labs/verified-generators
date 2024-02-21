@@ -4,9 +4,9 @@ import openai
 # from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain_openai import OpenAIEmbeddings
 
-from pydantic_models.dat_message import DatMessage, Type
-from pydantic_models.connector_specification import ConnectorSpecification
-from connectors.generators.base import GeneratorBase
+from dat_core.pydantic_models.dat_message import DatMessage, Type
+from dat_core.pydantic_models.connector_specification import ConnectorSpecification
+from dat_core.connectors.generators.base import GeneratorBase
 
 class OpenAI(GeneratorBase):
     _spec_file = os.path.join(os.path.dirname(
