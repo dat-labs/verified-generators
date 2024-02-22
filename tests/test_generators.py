@@ -3,7 +3,7 @@ from dat_core.pydantic_models.connector_specification import ConnectorSpecificat
 from dat_core.pydantic_models.dat_connection_status import Status
 from dat_core.pydantic_models.dat_message import DatMessage, Type, DatDocumentMessage, Data
 from dat_core.pydantic_models.stream_metadata import StreamMetadata
-from generators.generator_openai.generator import OpenAI
+from verified_generators.openai.generator import OpenAI
 from conftest import *
 
 
@@ -15,7 +15,7 @@ def test_generators_spec():
     """
 
     spec = OpenAI().spec()
-    with open('generators/generator_openai/specs/openai-specs.yml') as yaml_in:
+    with open('verified_generators/openai/specs/openai-specs.yml') as yaml_in:
         schema = yaml.safe_load(yaml_in)
         assert schema == spec
 
