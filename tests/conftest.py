@@ -11,7 +11,7 @@ def valid_generator_config_json():
     """
     yield json.dumps({
         "name": "OpenAI", 
-        "connectionSpecification": {
+        "connection_specification": {
             "openai_api_key": getenv('OPENAI_API_KEY')
             }
         })

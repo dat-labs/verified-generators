@@ -22,7 +22,7 @@ def test_generators_spec():
 
 def test_generators_check(valid_generator_config_json):
     """
-    GIVEN a valid connectionSpecification JSON config
+    GIVEN a valid connection_specification JSON config
     WHEN check() is called on a valid Generator class
     THEN no error is raised
     """
@@ -34,7 +34,7 @@ def test_generators_check(valid_generator_config_json):
 
 def test_generators_generate(valid_generator_config_json):
     """
-    GIVEN a valid connectionSpecification JSON config
+    GIVEN a valid connection_specification JSON config
     WHEN generate() is called on a valid Generator class
     THEN a generator is returned with metadata intact and vectors populated
     """
