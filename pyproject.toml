@@ -1,0 +1,21 @@
+[project]
+name = "verified-generators"
+version = "0.1.0"
+description = "Will host generators for the dat project"
+license = {text = "MIT License"}
+dependencies = [
+  "pytest",
+  "pydantic",
+  "PyYAML",
+  # TODO
+  "openai",
+  "langchain_openai",
+]
+
+[build-system]
+requires = [
+    "setuptools", "wheel",
+]
+
+# [tool.setuptools.packages.find]
+# exclude = ["Executables*", "Orchestrator*", ] 
