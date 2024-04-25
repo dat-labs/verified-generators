@@ -46,7 +46,7 @@ class OpenAI(GeneratorBase):
 
 
 if __name__ == '__main__':
-    from pydantic_models.dat_message import DatDocumentMessage, Data
+    from dat_core.pydantic_models.dat_message import DatDocumentMessage, Data
     s = OpenAI().spec()
     print(s)
 

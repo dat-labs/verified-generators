@@ -1,9 +1,9 @@
 import os
 from typing import Any, Tuple, Iterator
 from sentence_transformers import SentenceTransformer
-from pydantic_models.dat_message import DatMessage, Type
-from pydantic_models.connector_specification import ConnectorSpecification
-from connectors.generators.base import GeneratorBase
+from dat_core.pydantic_models.dat_message import DatMessage, Type
+from dat_core.pydantic_models.connector_specification import ConnectorSpecification
+from dat_core.connectors.generators.base import GeneratorBase
 
 
 class SentenceTransformers(GeneratorBase):
@@ -35,7 +35,7 @@ class SentenceTransformers(GeneratorBase):
         yield dat_message
 
 if __name__ == '__main__':
-    from pydantic_models.dat_message import DatDocumentMessage, Data
+    from dat_core.pydantic_models.dat_message import DatDocumentMessage, Data
     e = SentenceTransformers().generate(
         config=ConnectorSpecification.model_validate_json(
             open('generator_config.json').read()),
