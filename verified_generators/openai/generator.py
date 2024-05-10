@@ -15,8 +15,7 @@ class OpenAI(GeneratorBase):
     def check_connection(self, config: ConnectorSpecification) -> Tuple[bool, Any]:
         try:
             _r = OpenAIEmbeddings(
-                openai_api_key=config.connection_specification.get(
-                    'openai_api_key'),
+                openai_api_key=config.connection_specification.openai_api_key,
             ).embed_query('foo')
         except openai.AuthenticationError:
             raise
@@ -39,8 +38,7 @@ class OpenAI(GeneratorBase):
         """
 
         dat_message.record.data.vectors = OpenAIEmbeddings(
-            openai_api_key=config.connection_specification.get(
-                'openai_api_key'),
+            openai_api_key=config.connection_specification.openai_api_key,
         ).embed_query(dat_message.record.data.document_chunk)
         yield dat_message
 
