@@ -13,3 +13,5 @@ properties:
     properties:
       openai_api_key:
         type: string
+        title: "OpenAPI key"
+        order: 0
