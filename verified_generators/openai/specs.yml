@@ -13,3 +13,11 @@ properties:
     properties:
       openai_api_key:
         type: string
+        description: "OpenAI key"
+        title: "OpenAI key"
+        order: 0
+      openai-model:
+        type: string
+        description: "OpenAI model"
+        title: "OpenAI model"
+        order: 1

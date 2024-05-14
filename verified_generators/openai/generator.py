@@ -9,9 +9,7 @@ from dat_core.pydantic_models.connector_specification import ConnectorSpecificat
 from dat_core.connectors.generators.base import GeneratorBase
 
 class OpenAI(GeneratorBase):
-    _spec_file = os.path.join(os.path.dirname(
-        os.path.abspath(__file__)), 'specs/openai-specs.yml')
-
+    
     def check_connection(self, config: ConnectorSpecification) -> Tuple[bool, Any]:
         try:
             _r = OpenAIEmbeddings(

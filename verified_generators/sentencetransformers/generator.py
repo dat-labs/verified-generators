@@ -7,8 +7,6 @@ from dat_core.connectors.generators.base import GeneratorBase
 
 
 class SentenceTransformers(GeneratorBase):
-    _spec_file = os.path.join(os.path.dirname(
-        os.path.abspath(__file__)), 'specs/sentencetransformers-specs.yml')
 
     def check_connection(self, config: ConnectorSpecification) -> Tuple[bool, Any]:
         return (True, None)
