@@ -2,25 +2,27 @@ import os
 from typing import Any, Tuple, Iterator
 from sentence_transformers import SentenceTransformer
 from dat_core.pydantic_models.dat_message import DatMessage, Type
-from dat_core.pydantic_models.connector_specification import ConnectorSpecification
 from dat_core.connectors.generators.base import GeneratorBase
+from verified_generators.sentencetransformers.specs import SentenceTransformersSpecification
 
 
 class SentenceTransformers(GeneratorBase):
 
-    def check_connection(self, config: ConnectorSpecification) -> Tuple[bool, Any]:
+    _spec_class = SentenceTransformersSpecification
+
+    def check_connection(self, config: SentenceTransformersSpecification) -> Tuple[bool, Any]:
         return (True, None)
 
     def generate(
         self,
-        config: ConnectorSpecification,
+        config: SentenceTransformersSpecification,
         dat_message: DatMessage
     ) -> Iterator[DatMessage]:
         """
         The generator operation will generator vector chunks
 
         Args:
-            config (ConnectorSpecification): The user-provided configuration as specified by
+            config (SentenceTransformersSpecification): The user-provided configuration as specified by
               the generator's spec.
             document_chunks: DatMessage containing 
         Yields:
@@ -35,7 +37,7 @@ class SentenceTransformers(GeneratorBase):
 if __name__ == '__main__':
     from dat_core.pydantic_models.dat_message import DatDocumentMessage, Data
     e = SentenceTransformers().generate(
-        config=ConnectorSpecification.model_validate_json(
+        config=SentenceTransformersSpecification.model_validate_json(
             open('generator_config.json').read()),
         dat_message=DatMessage(
             type=Type.RECORD,
