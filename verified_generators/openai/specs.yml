@@ -16,8 +16,9 @@ properties:
         description: "OpenAI key"
         title: "OpenAI key"
         order: 0
-      openai-model:
+      openai_model:
         type: string
+        default: "text-embedding-ada-002"
         description: "OpenAI model"
         title: "OpenAI model"
         order: 1

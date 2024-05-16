@@ -37,6 +37,7 @@ class OpenAI(GeneratorBase):
 
         dat_message.record.data.vectors = OpenAIEmbeddings(
             openai_api_key=config.connection_specification.openai_api_key,
+            model=config.connection_specification.openai_model,
         ).embed_query(dat_message.record.data.document_chunk)
         yield dat_message
 
