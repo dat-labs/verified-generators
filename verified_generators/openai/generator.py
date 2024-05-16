@@ -5,12 +5,14 @@ import openai
 from langchain_openai import OpenAIEmbeddings
 
 from dat_core.pydantic_models.dat_message import DatMessage, Type
-from dat_core.pydantic_models.connector_specification import ConnectorSpecification
 from dat_core.connectors.generators.base import GeneratorBase
+from verified_generators.openai.specs import OpenAISpecification
 
 class OpenAI(GeneratorBase):
     
-    def check_connection(self, config: ConnectorSpecification) -> Tuple[bool, Any]:
+    _spec_class = OpenAISpecification
+    
+    def check_connection(self, config: OpenAISpecification) -> Tuple[bool, Any]:
         try:
             _r = OpenAIEmbeddings(
                 openai_api_key=config.connection_specification.openai_api_key,
@@ -21,14 +23,14 @@ class OpenAI(GeneratorBase):
 
     def generate(
         self,
-        config: ConnectorSpecification,
+        config: OpenAISpecification,
         dat_message: DatMessage
     ) -> Iterator[DatMessage]:
         """
         The generator operation will generator vector chunks
 
         Args:
-            config (ConnectorSpecification): The user-provided configuration as specified by
+            config (OpenAISpecification): The user-provided configuration as specified by
               the generator's spec.
             document_chunks: DatMessage containing 
         Yields:
@@ -47,12 +49,12 @@ if __name__ == '__main__':
     s = OpenAI().spec()
     print(s)
 
-    c = OpenAI().check(config=ConnectorSpecification.model_validate_json(
+    c = OpenAI().check(config=OpenAISpecification.model_validate_json(
         open('generator_config.json').read()),)
     print(c)
 
     e = OpenAI().generate(
-        config=ConnectorSpecification.model_validate_json(
+        config=OpenAISpecification.model_validate_json(
             open('generator_config.json').read()),
         dat_message=DatMessage(
             type=Type.RECORD,
