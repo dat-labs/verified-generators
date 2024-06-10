@@ -1,8 +1,11 @@
+import os
 from pytest import fixture
 
 @fixture()
 def valid_connection_object():
-    yield {}
+    yield {
+        "cohere_api_key": os.getenv('COHERE_API_KEY'),
+    }
 
 @fixture()
 def valid_dat_record_message():
