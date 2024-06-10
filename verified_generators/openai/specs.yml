@@ -13,8 +13,8 @@ properties:
     properties:
       openai_api_key:
         type: string
-        description: "OpenAI key"
-        title: "OpenAI key"
+        description: "OpenAI API key"
+        title: "OpenAI API key"
         order: 0
       openai_model:
         type: string
