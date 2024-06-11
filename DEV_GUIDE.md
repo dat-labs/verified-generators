@@ -4,7 +4,7 @@
 
 A detailed guide to help you develop your own connector for `verified-generators` and ensure that all your tests pass.
 
-Assuming you ran the `stub-generator-cli` and you were met these lines in your terminal output.
+Assuming you ran the `stub-generator-cli` and you were met with these lines in your terminal output.
 
 ```text
 ...
