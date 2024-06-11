@@ -50,7 +50,7 @@ poetry install
 This will install all the necessary dependencies for the project.
 
 ## Developing
-Please refer the detailed guide given [here](http://path-to-guide.com).
+Please refer the detailed guide given [here](https://github.com/dat-labs/verified-generators/blob/main/DEV_GUIDE.md).
 
 ## Contributing
 If you want to contribute to this project, please read the [contribution guidelines](CONTRIBUTING).
