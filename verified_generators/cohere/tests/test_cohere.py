@@ -1,6 +1,6 @@
 from verified_generators.cohere.generator import Cohere
 from verified_generators.cohere.specs import CohereSpecification
-from dat_core.pydantic_models import DatConnectionStatus, DatDocumentStream
+from dat_core.pydantic_models import DatConnectionStatus, DatMessage
 from conftest import *
 
 
@@ -26,7 +26,7 @@ def test_generate(valid_connection_object, valid_dat_record_message):
     cohere = Cohere()
     records = cohere.generate(
         config=config,
-        dat_message=valid_dat_record_message,
+        dat_message=DatMessage(**valid_dat_record_message),
     )
     for record in records:
-        assert DatDocumentStream.model_validate(record)
+        assert DatMessage.model_validate(record)
