@@ -3,7 +3,6 @@ from typing import Any, Optional, Tuple, Iterator
 import cohere
 from dat_core.pydantic_models.dat_message import DatMessage
 from dat_core.connectors.generators.base import GeneratorBase
-from dat_core.pydantic_models import ConnectorSpecification
 from verified_generators.cohere.specs import CohereSpecification
 
 
@@ -14,7 +13,7 @@ class Cohere(GeneratorBase):
     def __init__(self) -> None:
         super().__init__()
 
-    def check_connection(self, config: ConnectorSpecification) -> Tuple[bool, Optional[Any]]:
+    def check_connection(self, config: CohereSpecification) -> Tuple[bool, Optional[Any]]:
         cohere_client = get_cohere_client(
             config.connection_specification.cohere_api_key
         )
@@ -48,8 +47,8 @@ class Cohere(GeneratorBase):
         )
         input_type = "search_query"
         dat_message.record.data.vectors = cohere_client.embed(
-            texts=dat_message.record.data.document_chunk,
-            model=config.connection_specification.openai_model,
+            texts=[dat_message.record.data.document_chunk],
+            model=config.connection_specification.cohere_model,
             input_type=input_type,
             embedding_types=['float'],
         )
