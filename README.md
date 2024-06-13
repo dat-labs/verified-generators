@@ -52,6 +52,9 @@ This will install all the necessary dependencies for the project.
 ## Developing
 Please refer the detailed guide given [here](https://github.com/dat-labs/verified-generators/blob/main/DEV_GUIDE.md).
 
+## Intregrating
+To integrate your newly written actor with the `dat-ui` and test it in a `connection`, head over to the detailed guide [here](http://path/to/integration.guide).
+
 ## Contributing
 If you want to contribute to this project, please read the [contribution guidelines](CONTRIBUTING).
 
