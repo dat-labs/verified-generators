@@ -45,12 +45,13 @@ class Cohere(GeneratorBase):
             config.connection_specification.cohere_api_key
         )
         input_type = "search_query"
-        dat_message.record.data.vectors = cohere_client.embed(
+        res = cohere_client.embed(
             texts=[dat_message.record.data.document_chunk],
             model=config.connection_specification.cohere_model,
             input_type=input_type,
             embedding_types=['float'],
-        ).embeddings.float
+        )
+        dat_message.record.data.vectors = res.embeddings.float[0]
         yield dat_message
 
 def get_cohere_client(cohere_api_key):
