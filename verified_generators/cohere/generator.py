@@ -51,7 +51,7 @@ class Cohere(GeneratorBase):
             model=config.connection_specification.cohere_model,
             input_type=input_type,
             embedding_types=['float'],
-        )
+        ).embeddings.float
         yield dat_message
 
 def get_cohere_client(cohere_api_key):
