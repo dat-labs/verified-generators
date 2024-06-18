@@ -7,8 +7,7 @@ from verified_generators.cohere.specs import CohereSpecification
 
 
 class Cohere(GeneratorBase):
-    _spec_file = os.path.join(os.path.dirname(
-        os.path.abspath(__file__)), 'specs.yml')
+    _spec_class = CohereSpecification
 
     def __init__(self) -> None:
         super().__init__()
