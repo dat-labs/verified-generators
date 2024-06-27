@@ -2,9 +2,14 @@
 
 ## Introduction
 
-A detailed guide to help you develop your own connector for `verified-generators` and ensure that all your tests pass.
+This is a detailed guide to help you develop your own connector for `verified-generators` and ensure that all your tests pass.
 
-Assuming you ran the `stub-generator-cli` and you were met with these lines in your terminal output.
+### Generate stub files for your verified-generator actor
+```bash
+dat-cli init
+```
+
+Follow the onscreen instructions and you will be met with these lines in your terminal output.
 
 ```text
 ...
