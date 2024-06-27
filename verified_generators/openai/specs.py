@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, Literal
 
 from pydantic import BaseModel, Field
 from dat_core.pydantic_models import ConnectionSpecification
@@ -18,8 +18,11 @@ class ConnectionSpecificationModel(ConnectionSpecification):
 
 
 class OpenAISpecification(BaseModel):
-    class Config:
-        extra = 'allow'
+    name: Literal['OpenAI']
+    module_name: Literal['openai']
+    documentation_url: Optional[str] = (
+        'https://datlabs.gitbook.io/datlabs/integrations/generators/openai'
+    )
 
     connection_specification: ConnectionSpecificationModel = Field(
         ...,
