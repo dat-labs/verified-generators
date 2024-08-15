@@ -4,32 +4,23 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, Literal
 
 from pydantic import AnyUrl, BaseModel, Field
+from dat_core.pydantic_models import ConnectionSpecification
 
-class ConnectionSpecification(BaseModel):
-    class Config:
-        extra = 'allow'
-
+class ConnectionSpecificationModel(ConnectionSpecification):
     cohere_api_key: str = Field(..., description='Cohere key', title='Cohere API key')
     cohere_model: Optional[str] = Field(
         'embed-english-v3.0', description='Cohere model', title='Cohere model'
     )
 
 class CohereSpecification(BaseModel):
-    class Config:
-        extra = 'allow'
-
     documentation_url: Optional[AnyUrl] = None
-    name: str = Field(
-        ...,
-        description='The name of the specific connector to which this ConnectorSpecification belongs.',
-    )
-    module_name: str = Field(
-        ..., description='Name of the python module for this connector'
-    )
-    connection_specification: ConnectionSpecification = Field(
+    name: Literal['Cohere']
+    module_name: Literal['cohere']
+    
+    connection_specification: ConnectionSpecificationModel = Field(
         ...,
         description='ConnectorDefinition specific blob. Must be a valid JSON string.',
     )
