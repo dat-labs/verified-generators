@@ -11,7 +11,12 @@ from dat_core.pydantic_models import ConnectionSpecification
 
 
 class ConnectionSpecificationModel(ConnectionSpecification):
-    openai_api_key: str = Field(..., description='OpenAI API key', title='OpenAI API key')
+    openai_api_key: str = Field(..., description='OpenAI API key',
+                                title='OpenAI API key', json_schema_extra={
+                                    'ui-opts': {
+                                        'masked': True,
+                                    }
+                                })
     openai_model: Optional[str] = Field(
         'text-embedding-ada-002', description='OpenAI model', title='OpenAI model'
     )
